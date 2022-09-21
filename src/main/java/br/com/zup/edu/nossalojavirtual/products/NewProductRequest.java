@@ -47,6 +47,22 @@ class NewProductRequest {
     @JoinColumn(name = "category_id")
     private Long categoryId;
 
+    public NewProductRequest(String name,
+                             BigDecimal price,
+                             Integer stockQuantity,
+                             List<String> photos,
+                             List<NewCharacteristicRequest> characteristics,
+                             String description,
+                             Long categoryId) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.photos = photos;
+        this.characteristics = characteristics;
+        this.description = description;
+        this.categoryId = categoryId;
+    }
+
     /**
      * @deprecated frameworks eyes only
      */

@@ -23,7 +23,7 @@ public
 class Product {
 
     @Id
-    @Column(name = "product_id")
+    @Column(name = "product_id", columnDefinition = "binary(16)")
     private UUID id;
 
     @NotBlank
@@ -71,10 +71,11 @@ class Product {
     @OneToMany(mappedBy = "product")
     private List<Question> questions;
 
-    @Version
     @Column(name = "product_created_at")
     private LocalDateTime createdAt = now();
 
+    @Version
+    private int version;
 
     /**
      * @deprecated frameworks eyes only

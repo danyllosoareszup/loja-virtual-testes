@@ -19,8 +19,8 @@ public class NossaLojaVirtualApplication {
 
 	@Bean
 	CommandLineRunner runner(UserRepository repository) {
-		User buzz = new User("buzz@toystory.com", Password.encode("123456"));
-		User woody = new User("woody@toystory.com", Password.encode("123456"));
+		User buzz = new User("buzz@toystory.com");
+		User woody = new User("woody@toystory.com");
 
 		return (args) -> {
 			repository.save(buzz);

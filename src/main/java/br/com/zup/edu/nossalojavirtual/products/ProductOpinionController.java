@@ -2,9 +2,14 @@ package br.com.zup.edu.nossalojavirtual.products;
 
 import br.com.zup.edu.nossalojavirtual.shared.validators.ObjectIsRegisteredValidator;
 import br.com.zup.edu.nossalojavirtual.users.User;
+import br.com.zup.edu.nossalojavirtual.users.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -17,17 +22,23 @@ class ProductOpinionController {
 
     private final ProductOpinionRepository productOpinionRepository;
     private final ProductRepository productRepository;
+    private final UserRepository userRepository;
 
-    public ProductOpinionController(ProductOpinionRepository productOpinionRepository,
-                                    ProductRepository productRepository) {
+    ProductOpinionController(ProductOpinionRepository productOpinionRepository, ProductRepository productRepository, UserRepository userRepository) {
         this.productOpinionRepository = productOpinionRepository;
         this.productRepository = productRepository;
+        this.userRepository = userRepository;
     }
 
     @PostMapping
     ResponseEntity<?> create(@RequestBody @Valid NewOpinionRequest newOpinion,
-                             User user // TODO: Injetar usuário autenticado
+                             @AuthenticationPrincipal Jwt jwtUser
                             ) {
+
+        String userEmail = jwtUser.getClaim("email");
+
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "usuário não registrado"));
 
         var opinion = newOpinion.toProductOpinion(productRepository::findById, user);
         productOpinionRepository.save(opinion);
@@ -43,5 +54,4 @@ class ProductOpinionController {
                 NewOpinionRequest.class,
                 productRepository::existsById));
     }
-
 }

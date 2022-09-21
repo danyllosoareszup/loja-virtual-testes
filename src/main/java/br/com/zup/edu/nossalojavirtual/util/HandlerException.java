@@ -1,4 +1,4 @@
-package br.com.zup.edu.biblioteca.util;
+package br.com.zup.edu.nossalojavirtual.util;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -15,10 +15,10 @@ public class HandlerException {
     public ResponseEntity<?> methodArgumentNotValid(MethodArgumentNotValidException ex){
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
 
-        MensagemDeErro mensagemDeErro = new MensagemDeErro();
+        CustomErrorMessage customErrorMessage = new CustomErrorMessage();
 
-        fieldErrors.forEach(mensagemDeErro::adicionar);
+        fieldErrors.forEach(customErrorMessage::adicionar);
 
-        return ResponseEntity.badRequest().body(mensagemDeErro);
+        return ResponseEntity.badRequest().body(customErrorMessage);
     }
 }

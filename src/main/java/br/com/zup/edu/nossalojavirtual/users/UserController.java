@@ -22,8 +22,7 @@ class UserController {
 
     @PostMapping
     ResponseEntity<?> createUser(@RequestBody @Valid NewUserRequest newUser) {
-        Password password = Password.encode(newUser.getPassword());
-        var user = new User(newUser.getLogin(), password);
+        var user = new User(newUser.getLogin());
 
         userRepository.save(user);
 

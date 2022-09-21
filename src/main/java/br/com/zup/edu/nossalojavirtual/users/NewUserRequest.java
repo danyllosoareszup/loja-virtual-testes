@@ -11,8 +11,6 @@ class NewUserRequest {
     @NotEmpty
     private String login;
 
-    @Size(min = 6)
-    private String password;
 
     /**
      * @deprecated frameworks eyes only
@@ -20,25 +18,19 @@ class NewUserRequest {
     @Deprecated
     NewUserRequest() { }
 
-    NewUserRequest(@Email @NotEmpty String login,
-                   @Size(min = 6) String password) {
+    NewUserRequest(@Email @NotEmpty String login) {
         this.login = login;
-        this.password = password;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", NewUserRequest.class.getSimpleName() + "[", "]")
-                .add("login='" + login + "'")
-                .add("password='" + password + "'")
-                .toString();
+        return "NewUserRequest{" +
+                "login='" + login + '\'' +
+                '}';
     }
 }

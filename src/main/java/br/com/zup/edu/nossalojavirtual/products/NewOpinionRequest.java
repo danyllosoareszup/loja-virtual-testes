@@ -23,8 +23,18 @@ class NewOpinionRequest {
     @Length(max = 500)
     private String description;
 
-   @NotNull
+    @NotNull
     private UUID productId;
+
+    public NewOpinionRequest(Integer rating, String title, String description, UUID productId) {
+        this.rating = rating;
+        this.title = title;
+        this.description = description;
+        this.productId = productId;
+    }
+
+    public NewOpinionRequest() {
+    }
 
     public Integer getRating() {
         return rating;
@@ -47,6 +57,5 @@ class NewOpinionRequest {
                                      .orElseThrow(() -> new IllegalStateException(format("Product %s is not registered", productId)));
 
         return new ProductOpinion(rating, title, description, product, user);
-
     }
 }

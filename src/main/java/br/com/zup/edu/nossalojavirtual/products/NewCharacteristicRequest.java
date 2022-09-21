@@ -12,6 +12,14 @@ class NewCharacteristicRequest {
     @NotBlank
     private String description;
 
+    public NewCharacteristicRequest(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public NewCharacteristicRequest() {
+    }
+
     public String getName() {
         return name;
     }

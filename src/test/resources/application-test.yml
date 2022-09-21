@@ -7,7 +7,7 @@ spring:
       enabled: ALWAYS
   datasource:
     driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:devdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:devdb
     username: sa
   h2:
     console:
@@ -20,7 +20,7 @@ spring:
       hibernate:
         format_sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
       dialect: org.hibernate.dialect.H2Dialect
 
 ##
@@ -32,14 +32,4 @@ spring:
          jwt:
           issuer-uri: http://localhost:18080/realms/loja-virtual
 
-
-logging:
-  level:
-    org:
-      hibernate:
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
-      SQL: debug
 

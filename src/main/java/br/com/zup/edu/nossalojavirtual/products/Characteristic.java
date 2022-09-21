@@ -10,7 +10,6 @@ import static org.springframework.util.Assert.hasText;
 @Embeddable
 class Characteristic {
 
-
     @NotBlank
     private String name;
     @NotBlank

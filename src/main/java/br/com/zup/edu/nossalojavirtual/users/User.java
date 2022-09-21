@@ -27,10 +27,6 @@ public class User {
     @Column(name = "user_email", unique = true)
     private String email;
 
-    @Size(min = 6)
-    @Column(name = "user_password")
-    private String password;
-
     @OneToMany(mappedBy = "user")
     private Set<Product> products;
 
@@ -38,10 +34,8 @@ public class User {
     @CreationTimestamp
     private LocalDateTime createdAt = now();
 
-    public User(@Email @NotEmpty String email,
-                @NotNull Password password) {
+    public User(@Email @NotEmpty String email) {
         this.email = email;
-        this.password = password.get();
     }
 
     /**

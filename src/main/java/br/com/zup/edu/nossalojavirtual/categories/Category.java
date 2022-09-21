@@ -69,6 +69,10 @@ public class Category {
         return name;
     }
 
+    public Category getSuperCategory() {
+        return superCategory;
+    }
+
     /**
      *
      * @return a list of Categories from mother to this category itself
