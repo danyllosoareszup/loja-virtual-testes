@@ -145,6 +145,7 @@ class UserControllerTest {
                         MockMvcResultMatchers.status().isForbidden());
     }
 
+
     @Test
     @DisplayName("must register a user with valid data")
     void test5() throws Exception{
