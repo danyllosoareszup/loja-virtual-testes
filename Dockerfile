@@ -1,4 +1,4 @@
-FROM maven:4.0.0-jdk-17 AS builder
+FROM amazoncorretto:17 AS builder
 COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 RUN mvn -DskipTests -f /usr/src/app/pom.xml clean package
