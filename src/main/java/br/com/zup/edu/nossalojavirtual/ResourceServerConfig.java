@@ -36,12 +36,13 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers(HttpMethod.POST, "/api/products/**/questions").hasAuthority("SCOPE_questions:write")
                         .antMatchers(HttpMethod.POST, "/api/purchase").hasAuthority("SCOPE_purchase:write")
                         .antMatchers(HttpMethod.GET, "/api/products/**").hasAuthority("SCOPE_product:read")
+                        .antMatchers(HttpMethod.GET, "/actuator/").hasAuthority("SCOPE_actuator:read")
                         .antMatchers("/h2-console/**").permitAll()
                     .anyRequest()
                         .authenticated()
                     .and()
                         .oauth2ResourceServer()
-                            .jwt(jwt -> jwt.jwkSetUri("http://localhost:18080/realms/loja-virtual/protocol/openid-connect/certs"));
+                            .jwt(jwt -> jwt.jwkSetUri("http://localhost:18080/realms/nosa-loja-virtual/protocol/openid-connect/certs"));
 
 
         http.headers().frameOptions().sameOrigin();

@@ -213,7 +213,7 @@ class ProductOpinionControllerTest {
 
     @Test
     @DisplayName("must not register a opinion when the token is not sent")
-    void test5() throws Exception{
+    void test5() throws Exception {
 
         NewOpinionRequest newOpinion = new NewOpinionRequest(3, "Qualidade", "muito hergonômico", this.product.getId());
 
@@ -249,7 +249,5 @@ class ProductOpinionControllerTest {
                 .andExpect(
                         MockMvcResultMatchers.status().isForbidden());
     }
-
-
 
 }

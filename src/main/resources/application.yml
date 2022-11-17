@@ -30,16 +30,29 @@ spring:
      oauth2:
        resourceserver:
          jwt:
-          issuer-uri: http://localhost:18080/realms/loja-virtual
+          issuer-uri: http://localhost:18080/realms/nosa-loja-virtual
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, configprops, health
+  endpoint:
+    health:
+      show-details: always
+  info:
+    env:
+      enabled: 'true'
 
 
-logging:
-  level:
-    org:
-      hibernate:
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
-      SQL: debug
+
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
+#      SQL: debug
 

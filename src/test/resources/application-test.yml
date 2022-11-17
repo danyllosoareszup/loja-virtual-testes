@@ -31,5 +31,3 @@ spring:
        resourceserver:
          jwt:
           issuer-uri: http://localhost:18080/realms/loja-virtual
-
-

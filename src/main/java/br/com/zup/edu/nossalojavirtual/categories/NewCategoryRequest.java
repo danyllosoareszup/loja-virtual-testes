@@ -1,5 +1,7 @@
 package br.com.zup.edu.nossalojavirtual.categories;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +13,8 @@ import static java.lang.String.format;
 import static java.util.Objects.isNull;
 
 class NewCategoryRequest {
+
+    Logger logger = LoggerFactory.getLogger(NewCategoryRequest.class);
 
     @NotEmpty
     private String name;
@@ -42,7 +46,10 @@ class NewCategoryRequest {
     Category toCategory(Function<Long, Optional<Category>> findCategoryById) {
         if (!isNull(superCategory)) {
             var category  = findCategoryById.apply(superCategory)
-                                            .orElseThrow(() -> new IllegalStateException(format("The category %s informed does not exists", superCategory)));
+                                            .orElseThrow(() -> {
+                                                logger.error("The category {} informed does not exists", superCategory);
+                                                return new IllegalStateException(format("The category %s informed does not exists", superCategory));
+                                            });
 
             return new Category(name, category);
         }
@@ -57,4 +64,6 @@ class NewCategoryRequest {
                 .add("superCategory=" + superCategory)
                 .toString();
     }
+
+
 }

@@ -38,13 +38,13 @@ class Product {
     @Column(name = "product_stock_quantity")
     private Integer stockQuantity;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "product_photos",
             joinColumns = @JoinColumn(name = "product_id"))
     @Size(min = 1)
     private List<Photo> photos;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "product_characteristcs",
             joinColumns = @JoinColumn(name = "product_id"))
     @Size(min = 3)
@@ -65,7 +65,7 @@ class Product {
     @NotNull
     private User user;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
     private List<ProductOpinion> opinions;
 
     @OneToMany(mappedBy = "product")

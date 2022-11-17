@@ -27,7 +27,7 @@ public class User {
     @Column(name = "user_email", unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Product> products;
 
     @PastOrPresent
