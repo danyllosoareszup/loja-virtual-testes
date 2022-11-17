@@ -1,0 +1,10 @@
+version: '3.0'
+services:
+  app:
+    build: ..
+    ports:
+      - "8080:8080"
+    hostname: lojavirtual
+    container_name: lojavirtual
+    volumes:
+      - ../logs:/logs

@@ -2215,3 +2215,9 @@ Caused by: org.hibernate.loader.MultipleBagFetchException: cannot simultaneously
 2022-11-17 04:08:44,869 [restartedMain] INFO org.springframework.boot.StartupInfoLogger logStarted Started NossaLojaVirtualApplication in 5.682 seconds (JVM running for 6.535)
 2022-11-17 04:08:45,317 [RMI TCP Connection(1)-192.168.3.11] INFO org.apache.juli.logging.DirectJDKLog log Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-11-17 04:08:45,318 [RMI TCP Connection(1)-192.168.3.11] INFO org.springframework.web.servlet.FrameworkServlet initServletBean Initializing Servlet 'dispatcherServlet'
+2022-11-17 04:08:45,321 [RMI TCP Connection(1)-192.168.3.11] INFO org.springframework.web.servlet.FrameworkServlet initServletBean Completed initialization in 2 ms
+2022-11-17 05:06:09,889 [SpringApplicationShutdownHook] INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean destroy Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-17 05:06:09,898 [SpringApplicationShutdownHook] INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl perform HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2022-11-17 05:06:10,135 [SpringApplicationShutdownHook] WARN org.springframework.beans.factory.support.DisposableBeanAdapter destroy Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-214]
+2022-11-17 05:06:10,137 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource close HikariPool-1 - Shutdown initiated...
+2022-11-17 05:06:10,141 [SpringApplicationShutdownHook] INFO com.zaxxer.hikari.HikariDataSource close HikariPool-1 - Shutdown completed.
