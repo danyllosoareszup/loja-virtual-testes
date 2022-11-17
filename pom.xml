@@ -27,7 +27,7 @@
 
     <description>Projeto sobre uma loja virtual</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
